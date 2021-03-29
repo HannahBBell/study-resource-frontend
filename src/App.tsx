@@ -4,7 +4,6 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <form action="/endpoint" method="POST">
         <h2>Add a Resource</h2>
         <input placeholder="Input resource name..."></input>
         <br/>
@@ -46,7 +45,6 @@ function App() {
           <option>No</option>
         </select>
         <br/>
-      </form>
     </div>
   );
 }
