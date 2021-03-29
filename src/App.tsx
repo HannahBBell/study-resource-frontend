@@ -1,11 +1,56 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 
+interface IRecommendations {
+  id: number,
+  resource_name: string | null,
+  author_name: string | null,
+  url: string | null,
+  description: string | null,
+  category: string | null,
+  content_type: string | null,
+  mark_stage: string | null,
+  recommender_name: string | null,
+  is_faculty: boolean | null,
+  have_used: boolean | null 
+};
+
 function App() {
+
+  const [resourceName, setResourceName] = useState("");
+  const [category, setCategory] = useState("");
+  const [isFaculty, setIsFaculty] = useState(false);
+  const [listResources, setListResources] = useState<IRecommendations[]>([]);
+  //console.log(isFaculty);
+
+
+async function getResources() {
+  const response = await fetch('https://server-resource.herokuapp.com/');
+  const jsonData = await response.json();
+  setListResources(jsonData);
+};
+
+async function submitResource() {
+  const body = {resource_name: resourceName, category: category, is_faculty: isFaculty};
+  await fetch('https://server-resource.herokuapp.com/', {
+    method: 'POST',
+    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  });
+  getResources()
+  setIsFaculty(false);
+  setCategory("");
+  setResourceName("");
+  //make a fetch request to the post endpoint to submit x data into DBtable
+  //then reset all inputs
+}
+
   return (
     <div className="App">
         <h2>Add a Resource</h2>
-        <input placeholder="Input resource name..."></input>
+        <input value={resourceName} placeholder="Input resource name..." onChange={(event) => setResourceName(event.target.value)}></input>
         <br/>
         <input placeholder="Input author..."></input>
         <br/>
@@ -14,10 +59,10 @@ function App() {
         <input placeholder="Input Description"></input>
         <br/>
         <label>Select Category</label>
-        <select name="subject" id="subject">
-          <option>Python</option>
-          <option>JavaScript</option>
-          <option>TypeScript</option>
+        <select defaultValue="Python" name="subject" id="subject" onChange={(event) => setCategory(event.target.value)}>
+          <option value="Python">Python</option>
+          <option value="JavaScript">JavaScript</option>
+          <option value="TypeScript">TypeScript</option>
         </select>
         <br/>
         <label>Select Format</label>
@@ -37,7 +82,7 @@ function App() {
         <input placeholder="Input your name..."></input>
         <br/>
         <label>Are you Faculty?</label>
-        <input type="checkbox"></input>
+        <input defaultChecked={isFaculty} type="checkbox" onChange={(event) => setIsFaculty(!isFaculty)}></input>
         <br/>
         <label>Have you used it?</label>
         <select name="used-it?" id="used-it?">
@@ -45,6 +90,13 @@ function App() {
           <option>No</option>
         </select>
         <br/>
+        <button onClick={() => submitResource()}>Submit</button>
+        <div>{listResources.map((item) => { return <div>
+          <p>{item.resource_name}</p>
+          <p>{item.category}</p>
+          <p>{`Faculty is ${item.is_faculty}`}</p>
+          </div>})}
+          </div>
     </div>
   );
 }
