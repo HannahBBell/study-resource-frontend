@@ -26,7 +26,7 @@ function App() {
 
 
 async function getResources() {
-  const response = await fetch('https://server-resource.herokuapp.com/');
+  const response = await fetch('https://server-resource.herokuapp.com/three');
   const jsonData = await response.json();
   setListResources(jsonData);
 };
