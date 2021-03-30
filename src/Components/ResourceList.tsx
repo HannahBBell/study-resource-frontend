@@ -1,6 +1,6 @@
 import React from 'react';
 import ResourceCard from './ResourceCard';
-import { IRecommendations } from '../App'
+import { IRecommendations } from './ResourceApp'
 
 
 interface IMappedResourceCard {

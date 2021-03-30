@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ResourceList from './ResourceList';
-import { IRecommendations } from '../App'
+import { IRecommendations } from './ResourceApp'
 
 interface ISearchBar {
     listResources: IRecommendations[]

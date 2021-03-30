@@ -1,4 +1,4 @@
-import { IRecommendations } from '../App'
+import { IRecommendations } from './ResourceApp'
 
 
 interface IResourceCardProps {
