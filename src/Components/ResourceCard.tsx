@@ -6,12 +6,12 @@ interface IResourceCardProps {
 };
 
 function ResourceCard(props: IResourceCardProps) {
-    const {singularResourceCard} = props;
+    const { singularResourceCard } = props;
     return (
         <div>
-        <h1>{singularResourceCard.resource_name}</h1>
-        <p>{singularResourceCard.category}</p>
-        <p>{`Faculty is ${singularResourceCard.is_faculty}`}</p>
+            <h1>{singularResourceCard.resource_name}</h1>
+            <p>{singularResourceCard.category}</p>
+            <p>{`Faculty is ${singularResourceCard.is_faculty}`}</p>
         </div>
     );
 };

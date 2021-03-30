@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import ResourceList from './ResourceList';
 import { IRecommendations } from '../App'
 
@@ -6,19 +6,11 @@ interface ISearchBar {
     listResources: IRecommendations[]
 };
 
-function firstList(props: ISearchBar) {
-    const {listResources} = props;
-    let listOfThree = listResources.slice(0,3)
-    return <div>
-        {listOfThree}
-    </div>
-
-}
 
 function SearchBar(props: ISearchBar) {
     const [searchInput, setSearchInput] = useState("");
-    const {listResources} = props;
-    let listOfThree = listResources.slice(0,3)
+    const { listResources } = props;
+    let listOfThree = listResources.slice(0, 3)
     const filteredResources = listResources.filter(
         resource => {
             return (
@@ -45,7 +37,7 @@ function SearchBar(props: ISearchBar) {
         <h2>Search Resources</h2>
         <input type="search" placeholder="search" onChange={handleChange}></input>
         {resourceList()}
-        </div>)
+    </div>)
 }
 
 export default SearchBar

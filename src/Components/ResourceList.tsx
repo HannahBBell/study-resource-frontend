@@ -8,11 +8,11 @@ interface IMappedResourceCard {
 };
 
 function ResourceList(props: IMappedResourceCard) {
-    const {listResources} = props;
-    const mappedResources = listResources.map((item) => <ResourceCard singularResourceCard={item}/>)
+    const { listResources } = props;
+    const mappedResources = listResources.map((item) => <ResourceCard singularResourceCard={item} />)
     return <div>
         {mappedResources}
-        </div>
+    </div>
 };
 
 export default ResourceList
