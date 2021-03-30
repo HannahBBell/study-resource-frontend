@@ -6,11 +6,19 @@ interface ISearchBar {
     listResources: IRecommendations[]
 };
 
+function firstList(props: ISearchBar) {
+    const {listResources} = props;
+    let listOfThree = listResources.slice(0,3)
+    return <div>
+        {listOfThree}
+    </div>
 
+}
 
 function SearchBar(props: ISearchBar) {
     const [searchInput, setSearchInput] = useState("");
     const {listResources} = props;
+    let listOfThree = listResources.slice(0,3)
     const filteredResources = listResources.filter(
         resource => {
             return (
@@ -23,10 +31,16 @@ function SearchBar(props: ISearchBar) {
     }
 
     function resourceList() {
+        if (searchInput.length <= 0) {
+            return (<div>
+                <ResourceList listResources={listOfThree} />
+            </div>)
+        }
         return (<div>
             <ResourceList listResources={filteredResources} />
         </div>)
-    }
+    };
+
     return (<div>
         <h2>Search Resources</h2>
         <input type="search" placeholder="search" onChange={handleChange}></input>
