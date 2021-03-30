@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
-import ResourceList from './Components/ResourceCard';
+import ResourceList from './Components/ResourceList';
+import SearchBar from './Components/SearchBar';
+
 
 export interface IRecommendations {
-  id: number,
-  resource_name: string | null,
+  id: number, 
+  resource_name: string,
   author_name: string | null,
   url: string | null,
   description: string | null,
@@ -94,7 +96,7 @@ async function submitResource() {
         </select>
         <br/>
         <button onClick={() => submitResource()}>Submit</button>
-        <ResourceList listResources={listResources} />
+        <SearchBar listResources={listResources} />
     </div>
   );
 }

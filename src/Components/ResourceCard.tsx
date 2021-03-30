@@ -16,18 +16,6 @@ function ResourceCard(props: IResourceCardProps) {
     );
 };
 
-interface IMappedResourceCard {
-    listResources: IRecommendations[]
-};
 
 
-
-function ResourceList(props: IMappedResourceCard) {
-    const {listResources} = props;
-    return <div>
-        {listResources.map((item) => <ResourceCard singularResourceCard={item}/>)}
-        </div>
-};
-
-
-export default ResourceList
+export default ResourceCard
