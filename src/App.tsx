@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
+import ResourceList from './Components/ResourceCard';
 
-interface IRecommendations {
+export interface IRecommendations {
   id: number,
   resource_name: string | null,
   author_name: string | null,
@@ -29,6 +30,8 @@ async function getResources() {
   const jsonData = await response.json();
   setListResources(jsonData);
 };
+
+useEffect(() => {getResources()}, [])
 
 async function submitResource() {
   const body = {resource_name: resourceName, category: category, is_faculty: isFaculty};
@@ -91,12 +94,7 @@ async function submitResource() {
         </select>
         <br/>
         <button onClick={() => submitResource()}>Submit</button>
-        <div>{listResources.map((item) => { return <div>
-          <p>{item.resource_name}</p>
-          <p>{item.category}</p>
-          <p>{`Faculty is ${item.is_faculty}`}</p>
-          </div>})}
-          </div>
+        <ResourceList listResources={listResources} />
     </div>
   );
 }
