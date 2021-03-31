@@ -1,0 +1,18 @@
+ul {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    font-size: 50%;
+    gap: 15px;
+    text-align: center;
+    grid-auto-rows: minmax(100px, auto);
+    list-style: none;
+    padding-left: 0;
+}
+
+li {
+    background-color: lightsteelblue;
+    display: inline-block;
+    border-radius: 20px;
+    border-style: groove;
+
+}

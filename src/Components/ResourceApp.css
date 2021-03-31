@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Chango&display=swap');
+
+.AddResource {
+    float: right;
+    padding: 2%;
+    border: 'solid-black';
+    background-color: lightgrey;
+    margin-bottom: 100%;
+    border-style: outset;
+    display: block;
+}
+
+.ResourceApp {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Chango';
+}
+
+.category-titles {
+    font-family: 'Roboto';
+}
+

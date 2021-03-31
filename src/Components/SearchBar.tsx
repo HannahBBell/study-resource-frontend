@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import ResourceList from './ResourceList';
-import { IRecommendations } from './ResourceApp'
+import { IRecommendations } from './ResourceApp';
+import './SearchBar.css'
+
 
 interface ISearchBar {
     listResources: IRecommendations[]
@@ -33,10 +35,14 @@ function SearchBar(props: ISearchBar) {
         </div>)
     };
 
-    return (<div>
+    return (<div className="content">
+        <div className="search-bar">
         <h2>Search Resources</h2>
         <input type="search" placeholder="search" onChange={handleChange}></input>
+        </div>
+        <div className="resource-list">
         {resourceList()}
+        </div>
     </div>)
 }
 
